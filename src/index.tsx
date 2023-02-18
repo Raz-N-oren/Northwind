@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Layout from './Components/LayoutArea/Layout/Layout';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Layout from './Components/LayoutArea/Layout';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -10,3 +10,12 @@ a{
   color: blue;
 }
 
+.Box {
+  display: inline-block;
+  border: 1px solid black;
+  margin: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 5px 5px 10px;
+}
+
