@@ -1,4 +1,6 @@
+import Footer from './Footer/Footer';
 import Header from './Header/Header';
+import Menu from './Menu/Menu';
 import './Layout.css';
 
 function Layout(): JSX.Element {
@@ -8,13 +10,13 @@ function Layout(): JSX.Element {
                 <Header />
             </header>
             <aside>
-                2
+                <Menu />
             </aside>
             <main>
                 3
             </main>
             <footer>
-                4
+                <Footer />
             </footer>
         </div>
     )
