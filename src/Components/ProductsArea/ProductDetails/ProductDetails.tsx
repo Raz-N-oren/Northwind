@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
@@ -22,17 +22,28 @@ function ProductDetails(): JSX.Element {
 
     return (
         <div className="ProductDetails">
+            {product &&
 
-            {/* <ProductCard key={product?.id} product={product && product}></ProductCard> */}
+                <ProductCard key={product?.id} product={product && product}></ProductCard>
 
-            <h2>Product Details</h2>
-            <h3>Name: {product && product.name}</h3>
-            <h3>Price: {product?.price}</h3>
-            <h3>Stock: {product?.stock}</h3>
+            }
 
-            <img src={appConfig.productsImagesUrl + product?.imageName} alt={product?.name} />
+            {product &&
+                <>
+                {/* <Fragment> */}
+                    <h2>Product Details</h2>
+                    <h3>Name: {product && product.name}</h3>
+                    <h3>Price: {product?.price}</h3>
+                    <h3>Stock: {product?.stock}</h3>
+                    <img src={appConfig.productsImagesUrl + product?.imageName} alt={product?.name} />
+                </>
+                // {/* </Fragment> */}
+
+            }
+
             <br />
             <br />
+
 
             <NavLink to="/products">
                 Back

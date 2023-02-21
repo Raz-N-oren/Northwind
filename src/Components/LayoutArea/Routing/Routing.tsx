@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import About from "../../AboutArea/About/About";
 import Home from "../../HomeArea/Home/Home";
+import AddProduct from "../../ProductsArea/AddProduct/AddProduct";
 import ProductDetails from "../../ProductsArea/ProductDetails/ProductDetails";
 import ProductList from "../../ProductsArea/ProductList/ProductList";
 import PageNotFound from "../PageNotFound/PageNotFound";
@@ -19,6 +20,9 @@ function Routing(): JSX.Element {
 
                 {/* Product Details */}
                 <Route path="/products/Details/:prodId" element={<ProductDetails />}/>
+
+                {/* Add Details */}
+                <Route path="/products/new" element={<AddProduct />}/>
 
                 {/* About */}
                 <Route path="/about" element={<About />}/>
