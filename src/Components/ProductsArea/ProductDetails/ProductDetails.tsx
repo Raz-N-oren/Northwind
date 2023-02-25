@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
 import appConfig from "../../../Utils/config";
@@ -9,6 +9,7 @@ import "./ProductDetails.css";
 function ProductDetails(): JSX.Element {
 
     const params = useParams();
+    const navigate = useNavigate();
     const [product, setProduct] = useState<ProductModel>();
     // const [product, setProduct] = useState<ProductModel>(new ProductModel());
 
@@ -20,6 +21,18 @@ function ProductDetails(): JSX.Element {
             .catch(err => alert("Error: " + err.message))
     }, [])
 
+    async function deleteProduct(id: number) {
+        try {
+            await productsService.deleteProduct(id);
+            alert("Product has been deleted");
+            navigate("/products")
+
+        }
+        catch (err: any) {
+            alert(err.message)
+        }
+    }
+
     return (
         <div className="ProductDetails">
             {product &&
@@ -30,7 +43,7 @@ function ProductDetails(): JSX.Element {
 
             {product &&
                 <>
-                {/* <Fragment> */}
+                    {/* <Fragment> */}
                     <h2>Product Details</h2>
                     <h3>Name: {product && product.name}</h3>
                     <h3>Price: {product?.price}</h3>
@@ -47,6 +60,16 @@ function ProductDetails(): JSX.Element {
 
             <NavLink to="/products">
                 Back
+            </NavLink>
+            <span> | </span>
+
+            <NavLink to={"/products/edit/" + product?.id}>
+                Edit
+            </NavLink>
+            <span> | </span>
+
+            <NavLink to="#" onClick={() => deleteProduct(product.id)}>
+                Delete
             </NavLink>
 
         </div>

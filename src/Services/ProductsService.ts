@@ -56,6 +56,32 @@ class ProductsService {
         const addedProduct = response.data;
 
     }
+    
+    // Update product: 
+    public async updateProduct(product: ProductModel): Promise<void> {
+
+        // AJAX Request - Sending a new product to add, receiving back the added product - after adding to the database:
+
+        // const response = await axios.post<ProductModel>(appConfig.productsUrl, product); // Sending object without files.
+
+        const myFormData = new FormData(); // Can contain strings and / or files.
+        myFormData.append("name", product.name);
+        myFormData.append("price", product.price.toString());
+        myFormData.append("stock", product.stock.toString());
+        myFormData.append("image", product.image[0]); // image = FileList, image[0] = File
+
+        // Sending object with file (the image):
+        const response = await axios.put<ProductModel>(appConfig.productsUrl+ product.id, myFormData); // Sending object without files.
+
+        // Extract the added product: 
+        const updatedProduct = response.data;
+
+    }
+
+    // Delete product: 
+    public async deleteProduct(id: number): Promise<void> {
+        await axios.delete<void>(appConfig.productsUrl + id);
+    }
 }
 
 const productsService = new ProductsService();

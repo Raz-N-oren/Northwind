@@ -30,13 +30,16 @@ function AddProduct(): JSX.Element {
                 <h2>Add Product</h2>
 
                 <label>Name: </label>
-                <input type="text" {...register("name")} />
+                <input type="text" {...register("name",ProductModel.nameValidation)} />
+                <span className="Error">{formState.errors.name?.message}</span>
 
                 <label>Price: </label>
-                <input type="number" {...register("price")} />
+                <input type="number" {...register("price",ProductModel.priceValidation)} />
+                <span className="Error">{formState.errors.price?.message}</span>
 
                 <label>Stock: </label>
-                <input type="number" {...register("stock")} />
+                <input type="number" {...register("stock",ProductModel.stockValidation)} />
+                <span className="Error">{formState.errors.stock?.message}</span>
 
                 <label>Image: </label>
                 <input type="file" accept="image/*" {...register("image")} />

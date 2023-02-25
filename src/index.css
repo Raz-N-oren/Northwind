@@ -36,3 +36,9 @@ form > button {
   border-radius: 12px;
   box-shadow: 5px 5px 10px;
 }
+
+.Error{
+  color: red;
+  margin: 0 20px;
+  position: absolute;
+}
