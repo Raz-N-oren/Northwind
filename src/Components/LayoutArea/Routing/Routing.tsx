@@ -1,5 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import About from "../../AboutArea/About/About";
+import Login from "../../AuthArea/Login/Login";
+import Logout from "../../AuthArea/Logout/Logout";
+import Register from "../../AuthArea/Register/Register";
 import Home from "../../HomeArea/Home/Home";
 import AddProduct from "../../ProductsArea/AddProduct/AddProduct";
 import EditProduct from "../../ProductsArea/EditProduct/EditProduct";
@@ -13,29 +16,38 @@ function Routing(): JSX.Element {
         <div className="Routing">
             <Routes>
 
+                {/* Register */}
+                <Route path="/register" element={<Register />} />
+
+                {/* Login */}
+                <Route path="/login" element={<Login />} />
+
+                {/* Logout */}
+                <Route path="/logout" element={<Logout />} />
+
                 {/* Home */}
-                <Route path="/home" element={<Home />}/>
+                <Route path="/home" element={<Home />} />
 
                 {/* Product List */}
-                <Route path="/products" element={<ProductList />}/>
+                <Route path="/products" element={<ProductList />} />
 
                 {/* Product Details */}
-                <Route path="/products/Details/:prodId" element={<ProductDetails />}/>
+                <Route path="/products/Details/:prodId" element={<ProductDetails />} />
 
                 {/* Add product */}
-                <Route path="/products/new" element={<AddProduct />}/>
+                <Route path="/products/new" element={<AddProduct />} />
 
                 {/* Edit product */}
-                <Route path="/products/edit/:prodId" element={<EditProduct />}/>
+                <Route path="/products/edit/:prodId" element={<EditProduct />} />
 
                 {/* About */}
-                <Route path="/about" element={<About />}/>
+                <Route path="/about" element={<About />} />
 
                 {/* Default Route */}
-                <Route path="/" element={<Navigate to="/home" />}/>
+                <Route path="/" element={<Navigate to="/home" />} />
 
                 {/* Page Not Found */}
-                <Route path="*" element={<PageNotFound />}/>
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
         </div>
     );
