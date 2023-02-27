@@ -4,7 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Layout from './Components/LayoutArea/Layout/Layout';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import interceptorsService from './Services/InterceptorsService';
 
+interceptorsService.createInterceptors();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,5 +24,5 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-//05:16 AUTH
+//01:00:00
 

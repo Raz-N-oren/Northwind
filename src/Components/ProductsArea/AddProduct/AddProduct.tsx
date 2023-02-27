@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
+import useVerifyLoggedIn from "../../../Utils/useVerifyLoggedIn";
 import "./AddProduct.css";
 
 function AddProduct(): JSX.Element {
 
-    // useVerifyLoggedIn();
+    useVerifyLoggedIn();
 
     const { register, handleSubmit, formState } = useForm<ProductModel>();
     const navigate = useNavigate();

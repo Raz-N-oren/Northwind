@@ -42,3 +42,7 @@ form > button {
   margin: 0 20px;
   position: absolute;
 }
+
+button{
+  cursor: pointer;
+}

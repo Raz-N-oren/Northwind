@@ -2,6 +2,7 @@ import { ProductsActionType, productsStore } from './../Redux/ProductsState';
 import axios from "axios";
 import ProductModel from "../Models/ProductModel";
 import appConfig from "../Utils/config";
+import CategoryModel from '../Models/CategoryModel';
 
 //REST API Methods: --->
 //GET      Get data from server
@@ -114,6 +115,17 @@ class ProductsService {
 
         //Delete that product in the global state:
         productsStore.dispatch({ type: ProductsActionType.DeleteProduct, payload: id });
+    }
+
+    //Get all categories:
+    public async getAllCategories(): Promise<CategoryModel[]> {
+        //Send JWT header in specific request (NOT a good practice)
+        // const headers = { authorization: "Bearer " + authStore.getState().token }
+        // const response = await axios.get<CategoryModel[]>(appConfig.categoriesUrl, { headers });
+
+        const response = await axios.get<CategoryModel[]>(appConfig.categoriesUrl);
+        const categories = response.data;
+        return categories;
     }
 }
 
