@@ -25,6 +25,7 @@ export interface ProductsAction {
 // 4. Reducer - a function which will be invoked when calling dispatch to perform the operation
 export function productsReducer(currentState = new ProductsState(), action: ProductsAction): ProductsState {
 
+    //Duplicate current state:
     const newState = { ...currentState };
 
     switch (action.type) {
@@ -42,7 +43,7 @@ export function productsReducer(currentState = new ProductsState(), action: Prod
                 newState.products[indexToUpdate] = action.payload;
             }
             break;
-            
+
         case ProductsActionType.DeleteProduct: // Here the payload is the id of the product  to delete (number)
             const indexToDelete = newState.products.findIndex(p => p.id === action.payload);
             if (indexToDelete >= 0) {
@@ -51,6 +52,7 @@ export function productsReducer(currentState = new ProductsState(), action: Prod
             break;
     }
 
+    // Return the new state:
     return newState;
 
 }

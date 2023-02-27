@@ -14,6 +14,7 @@ function AddProduct(): JSX.Element {
     async function send(product: ProductModel) {
         try {
             await productsService.addProduct(product);
+            alert("Product successfully added");
             navigate("/products");
         }
         catch (err: any) {
