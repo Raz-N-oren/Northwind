@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
+import notifyService from "../../../Services/NotifyService";
 import productsService from "../../../Services/ProductsService";
 import useVerifyLoggedIn from "../../../Utils/useVerifyLoggedIn";
 import "./AddProduct.css";
@@ -15,12 +16,11 @@ function AddProduct(): JSX.Element {
     async function send(product: ProductModel) {
         try {
             await productsService.addProduct(product);
-            alert("Product successfully added");
+            notifyService.success("Product successfully added");
             navigate("/products");
         }
         catch (err: any) {
-            console.log("Error: " + err.message);
-
+            notifyService.error(err);
         }
     }
 

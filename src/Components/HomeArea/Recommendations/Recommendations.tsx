@@ -1,19 +1,20 @@
 import { SyntheticEvent } from "react";
+import notifyService from "../../../Services/NotifyService";
 import "./Recommendations.css";
 
 function Recommendations(): JSX.Element {
 
     function first():void{
-        alert("Irish Coffee");
+        notifyService.success("Irish Coffee");
     }
     function second(args: SyntheticEvent):void{
         console.log((args.target as HTMLButtonElement).innerHTML);
         
-        alert("Americano");
+        notifyService.success("Americano");
     }
 
     function third(item: string):void{
-        alert(item);
+        notifyService.success(item);
     }
 
     return (

@@ -1,10 +1,12 @@
 import { useState } from "react";
+import notifyService from "../../../Services/NotifyService";
 import productsService from "../../../Services/ProductsService";
 import "./TotalCategories.css";
 
 function TotalCategories(): JSX.Element {
 
     const [totalCategories,setTotalCategories] = useState<number>(0);
+    
 
     async function showTotalCategories(){
         try {
@@ -12,7 +14,7 @@ function TotalCategories(): JSX.Element {
             setTotalCategories(categories.length);
         } 
         catch (err: any) {
-            alert("Error: "+ err.message)
+            notifyService.error(err);
         }
     }
 

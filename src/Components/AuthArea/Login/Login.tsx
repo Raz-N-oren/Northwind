@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import CredentialsModel from "../../../Models/CredentialsModel";
 import authService from "../../../Services/AuthService";
+import notifyService from "../../../Services/NotifyService";
 import "./Login.css";
 
 function Login(): JSX.Element {
@@ -12,11 +13,11 @@ function Login(): JSX.Element {
     async function send(credentials: CredentialsModel) {
         try {
             await authService.login(credentials);
-            alert("Welcome back!");
+            notifyService.success("Welcome back!");
             navigate("/home");
         }
         catch (err: any) {
-            alert("Error: " + err.message)
+            notifyService.error(err);
         }
     }
     return (

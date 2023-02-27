@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
+import notifyService from "../../../Services/NotifyService";
 import productsService from "../../../Services/ProductsService";
 import Spinner from "../../SharedArea/Spinner/Spinner";
 import ProductCard from "../ProductCard/ProductCard";
@@ -13,7 +14,7 @@ function ProductList(): JSX.Element {
         productsService.getAllProducts()
             .then(products =>  setProduct(products)
             )
-            .catch(err => alert(err.message))
+            .catch(err => notifyService.error(err))
     }, []);
 
     return (

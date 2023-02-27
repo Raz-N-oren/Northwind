@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
+import notifyService from "../../../Services/NotifyService";
 import productsService from "../../../Services/ProductsService";
 import "./EditProduct.css";
 
@@ -20,7 +21,8 @@ function EditProduct(): JSX.Element {
                 setValue("price", product.price);
                 setValue("stock", product.stock);
             })
-            .catch(err => alert("Error: " + err.message))
+            .catch(err => notifyService.error(err))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     async function send(product: ProductModel) {
@@ -29,7 +31,7 @@ function EditProduct(): JSX.Element {
             navigate("/products");
         }
         catch (err: any) {
-            console.log("Error: " + err.message);
+            notifyService.error(err);
         }
     }
 

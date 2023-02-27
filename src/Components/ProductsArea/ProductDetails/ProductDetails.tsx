@@ -1,6 +1,7 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
+import notifyService from "../../../Services/NotifyService";
 import productsService from "../../../Services/ProductsService";
 import appConfig from "../../../Utils/config";
 import ProductCard from "../ProductCard/ProductCard";
@@ -18,18 +19,19 @@ function ProductDetails(): JSX.Element {
         const id = +params.prodId; //prodId must be the same name as declare in the routing!
         productsService.getOneProduct(id)
             .then(p => setProduct(p))
-            .catch(err => alert("Error: " + err.message))
+            .catch(err => notifyService.error(err))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     async function deleteProduct(id: number) {
         try {
             await productsService.deleteProduct(id);
-            alert("Product has been deleted");
+            notifyService.success("Product has been deleted");
             navigate("/products")
 
         }
         catch (err: any) {
-            alert(err.message)
+            notifyService.error(err);
         }
     }
 
