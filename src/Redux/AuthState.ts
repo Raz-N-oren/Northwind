@@ -6,6 +6,16 @@ import UserModel from "../Models/UserModel";
 export class AuthState {
     public token: string = null;
     public user: UserModel = null;
+
+    public constructor() {
+
+        //Take token from session storage, restore if exists:
+        this.token = sessionStorage.getItem("token");
+        if (this.token) {
+            const container: { user: UserModel } = jwtDecode(this.token);
+            this.user = container.user;
+        }
+    }
 }
 
 // 2. Auth Action type
@@ -34,11 +44,13 @@ export function authReducer(currentState = new AuthState(), action: AuthAction):
             newState.token = action.payload;
             const container: { user: UserModel } = jwtDecode(newState.token); // { user: id:1, firstName: "Raz",...}
             newState.user = container.user;
+            sessionStorage.setItem("token", newState.token);
             break;
 
         case AuthActionType.Logout:
             newState.token = null;
             newState.user = null;
+            sessionStorage.removeItem("token");
             break;
     }
 
