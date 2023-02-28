@@ -1,5 +1,6 @@
 import BestSeller from "../BestSeller/BestSeller";
 import Clock from "../Clock/Clock";
+import ClockEx from "../ClockEx/ClockEx";
 import Desserts from "../Desserts/Desserts";
 import Discount from "../Discount/Discount";
 import RandomDiscount from "../RandomDiscount/RandomDiscount";
@@ -33,6 +34,9 @@ function Home(): JSX.Element {
 
             {/* useEffect */}
             <Clock />
+
+            {/* Class Component */}
+            <ClockEx format="12h" />
         </div>
     );
 }

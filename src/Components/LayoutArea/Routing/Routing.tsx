@@ -3,6 +3,7 @@ import About from "../../AboutArea/About/About";
 import Login from "../../AuthArea/Login/Login";
 import Logout from "../../AuthArea/Logout/Logout";
 import Register from "../../AuthArea/Register/Register";
+import ContactUs from "../../ContactUsArea/ContactUs/ContactUs";
 import Home from "../../HomeArea/Home/Home";
 import AddProduct from "../../ProductsArea/AddProduct/AddProduct";
 import EditProduct from "../../ProductsArea/EditProduct/EditProduct";
@@ -42,6 +43,9 @@ function Routing(): JSX.Element {
 
                 {/* About */}
                 <Route path="/about" element={<About />} />
+
+                {/* Contact Us: */}
+                <Route path="/contact-us" element={<ContactUs />} />
 
                 {/* Default Route */}
                 <Route path="/" element={<Navigate to="/home" />} />

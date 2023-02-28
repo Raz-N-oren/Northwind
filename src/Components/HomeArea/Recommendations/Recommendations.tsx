@@ -8,8 +8,7 @@ function Recommendations(): JSX.Element {
         notifyService.success("Irish Coffee");
     }
     function second(args: SyntheticEvent):void{
-        console.log((args.target as HTMLButtonElement).innerHTML);
-        
+        // console.log((args.target as HTMLButtonElement).innerHTML);
         notifyService.success("Americano");
     }
 

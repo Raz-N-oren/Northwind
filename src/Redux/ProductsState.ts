@@ -1,6 +1,7 @@
 //Global state for all Products.
 
 import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import ProductModel from "../Models/ProductModel";
 
 // 1. Global State -the global data
@@ -14,6 +15,12 @@ export enum ProductsActionType {
     AddProduct,
     UpdateProduct,
     DeleteProduct
+
+    //For redux devtools debugging
+    // FetchProducts = "FetchProducts",
+    // AddProduct= "AddProduct",
+    // UpdateProduct= "UpdateProduct",
+    // DeleteProduct="DeleteProduct"
 }
 
 // 3. Action - A single object which dispatch sends to Redux for some changes:
@@ -58,4 +65,9 @@ export function productsReducer(currentState = new ProductsState(), action: Prod
 }
 
 // 5. Store - manager object from Redux library which handle the entire operation:
-export const productsStore = createStore(productsReducer);
+export const productsStore = createStore(productsReducer); // Production
+
+// For redux devtools debugging
+// export const productsStore = createStore(productsReducer,composeWithDevTools()); // Development
+
+// process.env.NODE_ENV = ""

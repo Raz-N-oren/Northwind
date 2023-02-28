@@ -2,11 +2,6 @@ import { useEffect, useState } from "react";
 import "./RandomDiscount.css";
 
 function RandomDiscount(): JSX.Element {
-
-    useEffect(()=>{
-        console.log("Performing Side-Effect");
-        
-    },[]); //[] is a dependency array - a list of variables to watch if one changed- call again the call back.
     
     const [randomDiscount, setRandomDiscount] = useState(0);
     function generateRandomDiscount() {
